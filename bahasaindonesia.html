@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bahasa Indonesia - My Yogyakarta Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6D4C41;
+            --secondary: #8D6E63;
+            --accent: #D7CCC8;
+            --light: #EFEBE9;
+            --dark: #3E2723;
+            --text: #5D4037;
+            --highlight: #A1887F;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .subject-nav {
+            background-color: var(--dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+        }
+        
+        .subject-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .subject-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .subject-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .subject-links a.active {
+            background-color: var(--primary);
+        }
+        
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 2rem;
+            margin-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+            z-index: 1;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .hotel-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .hotel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .hotel-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-right: 1.5rem;
+        }
+        
+        .hotel-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+        
+        .hotel-content {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hotel-text {
+            flex: 1;
+        }
+        
+        .hotel-text p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .hotel-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .hotel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .hotel-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .hotel-image:hover .image-caption {
+            opacity: 1;
+        }
+        
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .info-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .card-content {
+            font-size: 0.95rem;
+        }
+        
+        .gallery-section {
+            margin-top: 3rem;
+        }
+        
+        .gallery-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 0.5rem 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 2rem;
+        }
+        
+        .modal-image {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .modal-caption {
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .review-section {
+            background-color: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+        
+        .review-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .review-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .rating {
+            font-size: 3rem;
+            color: var(--primary);
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .stars {
+            color: #FFD700;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .review-text {
+            flex: 1;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .footer-text {
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        .copyright {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 1200px) {
+            .info-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hotel-content {
+                flex-direction: column;
+            }
+            
+            .hotel-image {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .subject-nav {
+                top: 70px;
+            }
+            
+            .subject-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .hero {
+                height: 50vh;
+                margin-top: 70px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hotel-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hotel-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .review-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Yogyakarta</a>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#destinations">Destinations</a>
+                <a href="index.html#accommodations">Stays</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Subject Navigation -->
+    <div class="subject-nav">
+        <div class="subject-links">
+            <a href="index.html">Home</a>
+            <a href="agama.html">Agama</a>
+            <a href="ppkn.html">PPKN</a>
+            <a href="bahasaindonesia.html" class="active">Bahasa Indonesia</a>
+            <a href="ips.html">IPS</a>
+            <a href="english.html">English</a>
+            <a href="mandarin.html">Mandarin</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image" style="background: url('9608_ho_00_p_1024x768 (1).jpg') center/cover no-repeat;"></div>
+        <div class="hero-content">
+            <h1>Hotel Grand Mercure Yogyakarta</h1>
+            <p>Pengalaman menginap di hotel bintang 5 dengan sentuhan budaya Jawa</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section">
+            <!-- Hotel Overview Section -->
+            <div class="hotel-section">
+                <div class="hotel-header">
+                    <div class="hotel-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h2 class="hotel-title">Deskripsi Hotel</h2>
+                </div>
+                
+                <div class="hotel-content">
+                    <div class="hotel-text">
+                        <p>Hotel Grand Mercure Yogyakarta Adi Sucipto adalah hotel bintang 5 yang terletak di Jl. Laksda Adisucipto No.80, Demangan Baru, Caturtunggal, Sleman, Kota Yogyakarta. Hotel ini dibangun dan resmi dibuka pada tahun 2017 oleh AccorHotels dan Sun Motor. Lokasinya strategis, dekat dengan pusat kota, dan dapat dijangkau dalam 20 menit dari Bandara Internasional Adi Sucipto.</p>
+                        <p>Dengan menampilkan gabungan warisan tradisi khas Jawa dan sentuhan Prancis, Grand Mercure Yogyakarta Adi Sucipto menampilkan candi Borobudur menjadi ornamen yang menghiasi setiap area hotel, dari lobby, restoran, dan bahkan toilet. Dekorasi dan interior yang unik ini juga bisa ditemui dalam semua 305 kamar mereka, yang terdiri dari 7 tipe yaitu; Superior, Premium Superior, Premium Superior Balcony, Deluxe, Premium Deluxe, Executive, dan Deluxe Suite.</p>
+                    </div>
+                    <div class="hotel-image">
+                        <img src="ab788b81 (1).avif" alt="Grand Mercure Yogyakarta">
+                        <div class="image-caption">Lobi Hotel Grand Mercure Yogyakarta</div>
+                    </div>
+                </div>
+                
+                <!-- Info Cards Section -->
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="card-title">Lokasi Strategis</h3>
+                        <div class="card-content">
+                            <p>Berada di pusat kota Yogyakarta, dekat dengan bandara dan tempat wisata utama seperti Malioboro dan Keraton Yogyakarta.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-archway"></i>
+                        </div>
+                        <h3 class="card-title">Desain Unik</h3>
+                        <div class="card-content">
+                            <p>Menggabungkan elemen budaya Jawa dengan sentuhan Prancis, dengan ornamen Candi Borobudur di seluruh area hotel.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                        <h3 class="card-title">Fasilitas Lengkap</h3>
+                        <div class="card-content">
+                            <p>Menawarkan berbagai fasilitas termasuk restoran, bar, spa, kolam renang, dan ruang pertemuan yang luas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Facilities Section -->
+            <div class="hotel-section">
+                <div class="hotel-header">
+                    <div class="hotel-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h2 class="hotel-title">Fasilitas Hotel</h2>
+                </div>
+                
+                <div class="hotel-content">
+                    <div class="hotel-text">
+                        <p>Para tamu akan menikmati pengalaman menginap yang nyaman dengan berbagai fasilitas lengkap yang tersedia. Hotel ini menyediakan restoran, bar, galeri seni, ruang pertemuan, fitness center, ballroom, serta area parkir yang luas untuk kenyamanan maksimal.</p>
+                        <p>Tamu dapat bersantai di executive lounge, area outdoor, spa, atau kolam renang terbuka, sambil menikmati pemandangan matahari terbenam yang indah. Untuk pengalaman kuliner, Purple Restaurant menyajikan makanan khas Yogyakarta yang asli, serta pilihan lain seperti Brazilian Grill dan berbagai hidangan internasional.</p>
+                        <p>Tamu yang ingin bersantai bisa berkunjung ke 80'8 Bar atau menikmati suasana nyaman di area terbuka Piazza Open Theatre. Selain itu, hotel ini menyediakan Wi-Fi yang cepat dan stabil, sehingga tamu tetap bisa terhubung, baik untuk urusan kerja maupun saat berlibur.</p>
+                    </div>
+                    <div class="hotel-image">
+                        <img src="Grand-Mercure-Yogyakarta-9.jpg" alt="Fasilitas Hotel">
+                        <div class="image-caption">Kolam Renang Hotel Grand Mercure</div>
+                    </div>
+                </div>
+                
+            
+            <!-- Location Section -->
+            <div class="hotel-section">
+                <div class="hotel-header">
+                    <div class="hotel-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h2 class="hotel-title">Lokasi & Aksesibilitas</h2>
+                </div>
+                
+                <div class="hotel-content">
+                    <div class="hotel-text">
+                        <p>Grand Mercure Yogyakarta Adi Sucipto berada di lokasi yang strategis, dekat dengan banyak tempat wisata terkenal di Yogyakarta. Dari hotel, Candi Prambanan dan Ratu Boko bisa dicapai dalam 30 menit. Taman Sari, Keraton Yogyakarta, dan Malioboro juga mudah dijangkau, hanya sekitar 25 menit perjalanan.</p>
+                        <p>Jika ingin mengunjungi Gunung Merapi atau Candi Borobudur, perjalanan memakan waktu sekitar 45 menit. Selain itu, hotel ini juga dekat dengan pusat perbelanjaan besar, yang bisa dicapai dalam 10 menit berkendara, lengkap dengan bioskop, taman wisata air, dan berbagai tempat menarik lainnya.</p>
+                        <p>Tepat di sebelah Grand Mercure Yogyakarta Adi Sucipto, terdapat ibis Yogyakarta Adi Sucipto, hotel ekonomi berdesain modern yang menawarkan kenyamanan berstandar internasional dengan harga terjangkau.</p>
+                    </div>
+                    <div class="hotel-image">
+                        <img src="Screenshot 2025-04-17 210744.png" alt="Lokasi Hotel">
+                        <div class="image-caption">Lokasi Strategis di Pusat Kota</div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Section -->
+                <div class="gallery-section">
+                    <h3 class="gallery-title">Tempat Wisata Terdekat</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="Malioboro-Jogja-1024x683-2862696376.webp" alt="Malioboro">
+                            <div class="gallery-caption">Malioboro (25 menit)</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images (13).jpeg" alt="Prambanan">
+                            <div class="gallery-caption">Candi Prambanan (30 menit)</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="Kraton-Yogyakarta.jpg" alt="Keraton">
+                            <div class="gallery-caption">Keraton Yogyakarta (25 menit)</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="gunungmerapiyogyakarta.jpg" alt="Merapi">
+                            <div class="gallery-caption">Gunung Merapi (45 menit)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Design Section -->
+            <div class="hotel-section">
+                <div class="hotel-header">
+                    <div class="hotel-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h2 class="hotel-title">Desain & Interior</h2>
+                </div>
+                
+                <div class="hotel-content">
+                    <div class="hotel-text">
+                        <p>Desain dan interior dalam hotel ini sangat modern dan menarik perhatian. Setiap sudut dalam hotel ini dihiasi dengan lukisan, patung, dan arsitektur yang unik. Dinding dan lantainya terbuat dari marmer, dan memiliki warna yang sangat mencolok dan menarik.</p>
+                        <p>Hal yang membedakan Hotel Grand Mercure Yogyakarta Adi Sucipto dengan hotel lainnya, adalah desain dan dekorasi Candi Borobudur yang diaplikasikan pada setiap kamar, dinding, dan sudut-sudut hotel. Terdapat patung-patung, lukisan, dan ukiran Candi Borobudur.</p>
+                        <p>Ketika masuk hotelnya, suasana yang dirasakan adalah nyaman dan menenangkan, terutama saat berkeliling dan melihat semua lukisan dan desain interior. Kamar-kamarnya sangat nyaman untuk beristirahat dan menginap.</p>
+                    </div>
+                    <div class="hotel-image">
+                        <img src="Grand-Mercure-Yogyakarta-5.jpg" alt="Desain Interior">
+                        <div class="image-caption">Desain Interior Bernuansa Borobudur</div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Section -->
+                <div class="gallery-section">
+                    <h3 class="gallery-title">Galeri Desain</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="80117329_XL.jpg" alt="Lobi">
+                            <div class="gallery-caption">Lobi dengan Ornamen Borobudur</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="7.jpg" alt="Koridor">
+                            <div class="gallery-caption">Koridor Hotel yang Artistik</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="9608_ho_03_p_1024x768.jpg" alt="Detail">
+                            <div class="gallery-caption">Detail Ornamen Jawa</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="grand-mercure-4.jpg" alt="Kamar">
+                            <div class="gallery-caption">Desain Kamar yang Elegan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review Section -->
+            <div class="review-section">
+                <h2 class="review-title">Ulasan Saya</h2>
+                <div class="review-content">
+                    <div class="rating">
+                        4.2<span style="font-size: 1.5rem;">/5</span>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        <p>Hotel Grand Mercure Yogyakarta Adi Sucipto menawarkan pengalaman menginap yang nyaman dengan desain interior yang unik dan fasilitas lengkap. Namun, hotel ini memiliki beberapa kekurangan yang perlu diperhatikan.</p>
+                        <p>Hotel ini tidak memiliki fasilitas untuk anak-anak, seperti taman bermain, klub anak-anak, dan fasilitas lainnya. Aktivitas yang disediakan di hotel ini juga kurang. Kami tidak menemukan aktivitas harian yang disiapkan untuk dinikmati oleh para tamu.</p>
+                        <p>Menurut saya, Hotel Grand Mercure Yogyakarta Adi Sucipto ini cocok bagi orang-orang yang sedang dalam perjalanan bisnis, dan orang-orang yang suka berkeliling kota dan tidak fokus menghabiskan waktu di hotel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Yogyakarta</div>
+            <p class="footer-text">Pengalaman menginap di Hotel Grand Mercure Yogyakarta</p>
+            <p class="copyright">© 2023 My Yogyakarta Journey</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // Image Gallery Modal
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const modalCaption = document.getElementById("modalCaption");
+        const closeBtn = document.getElementsByClassName("close")[0];
+        
+        // Get all gallery items
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        
+        // Add click event to each gallery item
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modalCaption.textContent = this.nextElementSibling.textContent;
+            });
+        });
+        
+        // Close modal when clicking X
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = "none";
+        });
+        
+        // Close modal when clicking outside image
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+        
+        // Animation for elements
+        const animatedElements = document.querySelectorAll('.info-card, .gallery-item, .hotel-image, .hotel-section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animatedElements.forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'all 0.5s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
+                           
